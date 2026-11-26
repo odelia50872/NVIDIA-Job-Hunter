@@ -43,6 +43,7 @@ EARLY_CAREER_TERMS = (
     "internship",
     "student",
     "new college grad",
+    "new college graduate",
     "new graduate",
     "recent graduate",
     "entry level",
@@ -197,8 +198,9 @@ def get_experience_level(job: dict[str, Any]) -> str:
 
     title = str(job.get("title", "")).lower()
     description = str(job.get("description", "")).lower()
+    job_type = str(job.get("job_type", "")).lower()
 
-    combined = f"{title} {description}"
+    combined = f"{title} {description} {job_type}"
 
     if has_any_term(combined, NO_EXPERIENCE_TERMS):
         return "high"
